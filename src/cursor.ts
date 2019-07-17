@@ -70,6 +70,7 @@ module Carbon {
       }
 
       this.properties.scale = this.defaultScale;
+      this.element.style.display = null;
 
       this.animate(0);
 
