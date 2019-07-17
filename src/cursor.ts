@@ -43,7 +43,7 @@ module Carbon {
 
     hidden = false;
 
-    static create(options = { blendMode: String, type: String }) {
+    static create(options: any = { }) {
       let el = document.createElement('div');
 
       let blendMode = options.blendMode || 'exclusion';
