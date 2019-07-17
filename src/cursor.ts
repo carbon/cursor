@@ -30,7 +30,9 @@ module Carbon {
       rotate: 0,
       rotateY: 0,
       opacity: 1
-    }
+    };
+
+    originalScale: number;
 
     lastEvent: MouseEvent;
     reactive = new Carbon.Reactive();
@@ -215,8 +217,6 @@ module Carbon {
       
       this.element.style.top = e.clientY + 'px';
       this.element.style.left = e.clientX + 'px';
-
-      
     }
 
     on(name: string, e: Function) {
@@ -303,8 +303,6 @@ module Carbon {
       this.element.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
       this.element.style.transform = `translate(-30px,-30px) rotate(${this.properties.rotate}deg) rotateY(${this.properties.rotateY}deg) scale(${this.properties.scale})`;
       this.element.style.opacity =  this.properties.opacity.toString();
-
-      console.log(this.properties.opacity);
       
       return new Promise((resolve, reject) => {
         setTimeout(resolve, duration);
