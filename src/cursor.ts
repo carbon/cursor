@@ -46,10 +46,13 @@ module Carbon {
     static create(options: any = { }) {
       let el = document.createElement('div');
 
-      let blendMode = options.blendMode || 'exclusion';
       let type = options.type || 'zoom-in';
 
-      let style = `position:fixed;display:none;top:0;left:0;mix-blend-mode:${blendMode};ointer-events:none;z-index:10000;`;
+      let style = `position:fixed;display:none;top:0;left:0;pointer-events:none;z-index:10000;`;
+
+      if (options.blendMode) {
+        style += 'mix-blend-mode:' + options.blendMode + ';';
+      }
 
       el.innerHTML = `<div class="cursor" style="${style}">` + icons[type] + `</div>`;
 
@@ -89,13 +92,11 @@ module Carbon {
       this.hidden = false;
 
       this.element.style.display = null;
-
-      await this.animate(100);
     }
 
     async hide() {
       this.element.style.display = 'none';
-
+      
       this.hidden = true;
     }
     
@@ -195,18 +196,18 @@ module Carbon {
     }
 
     onMouseMove(e: MouseEvent) {
-
-
       if (!this.lastEvent || this.lastEvent && this.lastEvent.srcElement !== e.srcElement) {
 
         if (this.mode == 'dynamic') {
           let el: HTMLElement;
 
+
           if (e.srcElement && (el = e.srcElement.closest('[data-cursor]'))) {
             el.style.cursor = 'none';
 
-            this.show();
             this.setType(el.dataset['cursor']);
+            this.show();
+
           }
           else {
             this.hide();
