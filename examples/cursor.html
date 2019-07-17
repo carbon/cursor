@@ -1,0 +1,80 @@
+<html>
+
+
+  <body>
+
+     
+      <div id="debug"></div>
+
+  <style>
+  
+  body {
+    
+    background: #000;
+  }
+
+  a {
+    color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+  }
+  </style>
+
+
+
+<script src="../lib/cursor.js"></script>
+
+<h3 style="padding:50px;">
+
+  <a onclick="cursor.start();document.body.style.cursor = null;">start</a>
+  <a onclick="cursor.stop();document.body.style.cursor = 'unset';">stop</a> 
+
+
+  <a onclick="cursor.scale(2);">SCALE 2x</a> 
+  <a onclick="cursor.scale(4);">SCALE 4x</a> 
+  <a onclick="cursor.scale(0.5);">SCALE 0.5x</a> 
+
+
+  <a onmouseover="cursor.toLeftArrow();" onclick="cursor.toLeftArrow();">left arrow</a> 
+
+  <a onmouseover="cursor.toRightArrow();" onclick="cursor.toRightArrow();">right arrow</a>  
+  <a onmouseover="cursor.toClose();" onclick="cursor.toClose();">close</a> 
+  <a onmouseover="cursor.toZoomIn();" onclick="cursor.toZoomIn();">zoom in</a> 
+  <a onmouseover="cursor.toZoomOut();" onclick="cursor.toZoomOut();">zoom out</a>  
+  <a onmouseover="cursor.toClose();" onclick="cursor.toClose();">close</a>  
+
+
+</h3>
+
+  </body>
+
+<script src="https://static.cmcdn.net/libs/corejs/2.2.0/corejs.js"></script>
+<script src="https://static.cmcdn.net/libs/gestures/0.4.0/gestures.js"></script>
+<script src="https://carbonmade-assets.accelerator.net/132/0.23.1/scripts/anime.js"></script>
+
+<script>
+
+/*
+
+var svg = '<svg width="100" height="100">' + Carbon.getCirclePath(50, 50, 47) + '</svg>';
+
+console.log(svg);
+
+let svgEl = new DOMParser().parseFromString(svg, 'text/html').body.firstElementChild;
+
+document.body.appendChild(svgEl);
+*/
+
+let cursor = Carbon.Cursor.create();
+
+document.body.style.cursor = 'none';
+
+cursor.scale(2, { duration: 0 });
+
+cursor.start();
+
+</script>
+
+</html>
