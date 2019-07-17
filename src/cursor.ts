@@ -28,11 +28,12 @@ module Carbon {
     properties = {
       scale: 1,
       rotate: 0,
-      rotateY: 0,
-      opacity: 1
+      rotateY: 0
     };
 
     originalScale: number;
+
+    defaultScale = 0.7;
 
     lastEvent: MouseEvent;
     reactive = new Carbon.Reactive();
@@ -42,24 +43,36 @@ module Carbon {
 
     hidden = false;
 
-    static create() {
+    static create(options = { blendMode: String, type: String }) {
       let el = document.createElement('div');
 
-      let style = 'position:fixed;top:0;left:0;mix-blend-mode:exclusion;transform:translate(-30px,-30px);pointer-events:none;z-index:10000;';
+      let blendMode = options.blendMode || 'exclusion';
+      let type = options.type || 'zoom-in';
 
-      el.innerHTML = `<div class="cursor" style="${style}">` + icons['zoom-in'] + `</div>`;
+      let style = `position:fixed;top:0;left:0;mix-blend-mode:${blendMode};transform:translate(-30px,-30px);pointer-events:none;z-index:10000;`;
+
+      el.innerHTML = `<div class="cursor" style="${style}">` + icons[type] + `</div>`;
 
       let parsedEl: HTMLElement = el.firstElementChild;
 
       document.body.appendChild(parsedEl);
 
-      return new Cursor(parsedEl);
+      return new Cursor(parsedEl, options);
     }
 
-    constructor(element: HTMLElement) {
+    constructor(element: HTMLElement, options) {
       this.element = element; // svg
 
       this.type = 'zoom-in';
+
+      if (options && options.scale) {
+        this.defaultScale = options.scale; 
+      }
+
+      this.properties.scale = this.defaultScale;
+
+      this.animate(0);
+
     }
     
     async scale(value: number, options: { duration?: number } = { }) {
@@ -72,9 +85,7 @@ module Carbon {
       await this.animate();
     }
 
-    async show() {      
-      this.properties.opacity = 1;
-
+    async show() {
       this.hidden = false;
 
       this.element.style.display = null;
@@ -302,7 +313,6 @@ module Carbon {
     animate(duration = 200) {
       this.element.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
       this.element.style.transform = `translate(-30px,-30px) rotate(${this.properties.rotate}deg) rotateY(${this.properties.rotateY}deg) scale(${this.properties.scale})`;
-      this.element.style.opacity =  this.properties.opacity.toString();
       
       return new Promise((resolve, reject) => {
         setTimeout(resolve, duration);
