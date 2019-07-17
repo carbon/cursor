@@ -91,6 +91,7 @@ module Carbon {
     async show() {
       this.hidden = false;
 
+      this.element.style.opacity = '1';
       this.element.style.display = null;
     }
 
@@ -200,7 +201,6 @@ module Carbon {
 
         if (this.mode == 'dynamic') {
           let el: HTMLElement;
-
 
           if (e.srcElement && (el = e.srcElement.closest('[data-cursor]'))) {
             el.style.cursor = 'none';
