@@ -49,7 +49,7 @@ module Carbon {
       let blendMode = options.blendMode || 'exclusion';
       let type = options.type || 'zoom-in';
 
-      let style = `position:fixed;top:0;left:0;mix-blend-mode:${blendMode};transform:translate(-30px,-30px);pointer-events:none;z-index:10000;`;
+      let style = `position:fixed;display:none;top:0;left:0;mix-blend-mode:${blendMode};ointer-events:none;z-index:10000;`;
 
       el.innerHTML = `<div class="cursor" style="${style}">` + icons[type] + `</div>`;
 
@@ -70,7 +70,6 @@ module Carbon {
       }
 
       this.properties.scale = this.defaultScale;
-      this.element.style.display = null;
 
       this.animate(0);
 
