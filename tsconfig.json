@@ -10,6 +10,8 @@
     "alwaysStrict": true
   },
   "files": [
-    "src/cursor.ts"
+    "src/lightbox.ts",
+    "src/cursor.ts",
+    "src/reactive.d.ts"
   ]
 }

@@ -1,6 +1,5 @@
 // Type: zoom-in, zoom-out, grab, left-arrow, right-arrow, grabbing, play, pause, close
 
-
 module Carbon {
 
   let icons = {
@@ -56,7 +55,7 @@ module Carbon {
 
       el.innerHTML = `<div class="cursor" style="${style}">` + icons[type] + `</div>`;
 
-      let parsedEl: HTMLElement = el.firstElementChild;
+      let parsedEl = el.firstElementChild as HTMLElement;
 
       document.body.appendChild(parsedEl);
 
@@ -75,7 +74,6 @@ module Carbon {
       this.properties.scale = this.defaultScale;
 
       this.animate(0);
-
     }
     
     async scale(value: number, options: { duration?: number } = { }) {
@@ -99,6 +97,27 @@ module Carbon {
       this.element.style.display = 'none';
       
       this.hidden = true;
+    }
+
+    check() {
+      if (!this.lastEvent) return;
+
+      let el = document.elementFromPoint(this.lastEvent.clientX, this.lastEvent.clientY);
+      
+      if (el) {
+        let cursorEl = el.closest('[data-cursor]') as HTMLElement;
+
+        if (cursorEl) {
+          cursorEl.style.cursor = 'none';
+
+          this.setType(cursorEl.dataset.cursor);
+
+          this.show();
+        }
+        else {
+          this.hide();
+        }
+      }
     }
     
     setType(value: string) {
@@ -167,7 +186,7 @@ module Carbon {
       
       this.type = 'right-arrow';
 
-      var flip = this.icon == 'left-arrow';
+      let flip = this.icon == 'left-arrow';
 
       if (!flip) {
         this.setIcon('right-arrow');
@@ -184,7 +203,7 @@ module Carbon {
 
       this.type = 'left-arrow';
 
-      var flip = this.icon == 'right-arrow';
+      let flip = this.icon == 'right-arrow';
 
       if (!flip) {
         this.setIcon('left-arrow');
@@ -206,6 +225,7 @@ module Carbon {
             el.style.cursor = 'none';
 
             this.setType(el.dataset['cursor']);
+
             this.show();
 
           }
@@ -214,13 +234,17 @@ module Carbon {
           }
         }
         
-        this.reactive.trigger('hover', { target: e.srcElement });
+        this.reactive.trigger({ 
+          type: 'hover', 
+          target: e.srcElement
+        });
       }
 
-      this.reactive.trigger('move', { 
-        target: e.srcElement, 
-        clientX: e.clientX, 
-        clientY: e.clientY 
+      this.reactive.trigger({
+        type    : 'move',
+        target  : e.srcElement, 
+        clientX : e.clientX, 
+        clientY : e.clientY 
       });
       
       this.lastEvent = e;
