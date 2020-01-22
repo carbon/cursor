@@ -1,6 +1,6 @@
 {
   "name": "cursor",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "main": "lib/cursor.js",
   "author": "Jason Nelson",
   "license": "MIT"
