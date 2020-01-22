@@ -18,7 +18,8 @@
     padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
-    display: block;
+    display: inline-block;
+    width: 100%;
   }
   </style>
 
@@ -37,15 +38,17 @@
   <a onclick="cursor.scale(0.5);">SCALE 0.5x</a> 
 
 
-  <a onmouseover="cursor.toLeftArrow();" onclick="cursor.toLeftArrow();">left arrow</a> 
-
-  <a onmouseover="cursor.toRightArrow();" onclick="cursor.toRightArrow();">right arrow</a>  
-  <a onmouseover="cursor.toClose();" onclick="cursor.toClose();">close</a> 
-  <a onmouseover="cursor.toZoomIn();" onclick="cursor.toZoomIn();">zoom in</a> 
-  <a onmouseover="cursor.toZoomOut();" onclick="cursor.toZoomOut();">zoom out</a>  
-  <a onmouseover="cursor.toClose();" onclick="cursor.toClose();">close</a>  
+  <div>
+    <a style="width:50%" data-cursor="left-arrow" onmouseover="cursor.toLeftArrow();">left arrow</a> 
+    <a style="width:50%" data-cursor="right-arrow" onmouseover="cursor.toRightArrow();">right arrow</a> 
+  </div>
 
 
+  <a data-cursor="right-arrow" onmouseover="cursor.toRightArrow();" onclick="cursor.toRightArrow();">right arrow</a>  
+  <a data-cursor="close" onmouseover="cursor.toClose();" onclick="cursor.toClose();">close</a>  
+  <a data-cursor="zoom-in" onmouseover="cursor.toZoomIn();" onclick="cursor.toZoomIn();">zoom in</a> 
+  <a data-cursor="zoom-out" onmouseover="cursor.toZoomOut();" onclick="cursor.toZoomOut();">zoom out</a>  
+  <a data-cursor="close" onmouseover="cursor.toClose();" onclick="cursor.toClose();">close</a>  
 </h3>
 
   </body>
@@ -69,11 +72,13 @@ document.body.appendChild(svgEl);
 
 let cursor = Carbon.Cursor.create();
 
-document.body.style.cursor = 'none';
+// document.body.style.cursor = 'none';
 
 cursor.scale(2, { duration: 0 });
 
 cursor.start();
+
+console.log('ABC!');
 
 </script>
 
