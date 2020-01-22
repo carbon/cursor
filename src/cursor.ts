@@ -8,12 +8,12 @@ module Carbon {
     <rect class="l2" x="40" y="29" width="2" height="20" rx="1" transform="rotate(90 40 29)" fill="#fff"/>
   </svg>`,
 
-    'left-arrow': `<svg width="20" height="37" viewBox="0 0 20 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.3527 35L2.5895 20.2034C2.40267 20.0172 2.25443 19.796 2.15328 19.5524C2.05213 19.3088 2.00006 19.0476 2.00006 18.7839C2.00006 18.5201 2.05213 18.259 2.15328 18.0154C2.25443 17.7718 2.40267 17.5505 2.5895 17.3644L17.9539 1.99999" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    'left-arrow': `<svg width="21" height="39" viewBox="0 0 21 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18.3595 37.1641L2.62815 21.3972C2.42907 21.1988 2.27111 20.9631 2.16333 20.7035C2.05555 20.4439 2.00006 20.1656 2.00006 19.8846C2.00006 19.6035 2.05555 19.3252 2.16333 19.0657C2.27111 18.8061 2.42907 18.5703 2.62815 18.3719L19.0001 1.99998" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`,
 
-    'right-arrow': `<svg width="20" height="37" viewBox="0 0 20 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3.06227 2L17.8254 16.7966C18.0123 16.9827 18.1605 17.204 18.2616 17.4476C18.3628 17.6912 18.4149 17.9523 18.4149 18.2161C18.4149 18.4799 18.3628 18.741 18.2616 18.9846C18.1605 19.2282 18.0123 19.4494 17.8254 19.6356L2.46105 35" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    'right-arrow': `<svg width="21" height="39" viewBox="0 0 21 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2.64064 2L18.372 17.7669C18.5711 17.9653 18.729 18.2011 18.8368 18.4606C18.9446 18.7202 19.0001 18.9985 19.0001 19.2795C19.0001 19.5606 18.9446 19.8389 18.8368 20.0985C18.729 20.358 18.5711 20.5938 18.372 20.7922L2 37.1641" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`,
 
   };
