@@ -187,6 +187,8 @@ module Carbon {
       this.type = 'right-arrow';
 
       this.setIcon('right-arrow');
+      this.svgEl.style.transform = 'translateX(35%)';
+
 
       /*
       let flip = this.icon == 'left-arrow';
@@ -209,7 +211,9 @@ module Carbon {
 
       this.type = 'left-arrow';
 
+
       this.setIcon('left-arrow');
+      this.svgEl.style.transform = 'translateX(35%)';
 
       /*
       let flip = this.icon == 'right-arrow';
